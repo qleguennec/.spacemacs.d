@@ -116,9 +116,11 @@
   (push '(c-mode . "42") c-default-style)
 
   (setq-default
-   evil-escape-key-sequence "jh"
+   evil-escape-key-sequence "jk"
    evil-escape-unordered-key-sequence t
    erc-autojoin-channels-alist '(("freenode.net" "#spacemacs"))
+   smartparens-global-mode nil
+   smartparens-mode nil
    )
   )
 
