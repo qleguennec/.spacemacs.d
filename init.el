@@ -90,9 +90,6 @@
    ))
 
 (defun dotspacemacs/user-init ()
-  )
-
-(defun dotspacemacs/user-config ()
   (setq load-path (append load-path '("~/.spacemacs.d/42")))
   (load "header.el")
   (load "auto.el")
@@ -117,7 +114,9 @@
                   (label . 0)
                   (statement-cont . 0))))
   (push '(c-mode . "42") c-default-style)
+  )
 
+(defun dotspacemacs/user-config ()
   (setq evil-escape-key-sequence "jh")
   (setq evil-escape-unordered-key-sequence t)
 
