@@ -114,14 +114,18 @@
                   (label . 0)
                   (statement-cont . 0))))
   (push '(c-mode . "42") c-default-style)
+
+  (setq-default
+   evil-escape-key-sequence "jh"
+   evil-escape-unordered-key-sequence t
+   erc-autojoin-channels-alist '(("freenode.net" "#spacemacs"))
+   )
   )
 
 (defun dotspacemacs/user-config ()
-  (setq evil-escape-key-sequence "jh")
-  (setq evil-escape-unordered-key-sequence t)
-
   (define-key evil-normal-state-map (kbd "TAB") (lambda () (interactive)
-                                                  (insert-char 9 1))))
+                                                  (insert-char 9 1)))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
