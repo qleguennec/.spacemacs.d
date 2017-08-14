@@ -122,6 +122,14 @@
 
 (defun dotspacemacs/user-config ()
   (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2) (setq-default
    nlign-to-tab-stop t
    evil-escape-key-sequence "fd"
    evil-escape-unordered-key-sequence t
