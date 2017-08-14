@@ -8,19 +8,13 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     w3m
      helm
      version-control
      git
      emacs-lisp
      themes-megapack
-     (c-c++ :variables c-c++-enable-clang-support t)
      auto-completion
-     (syntax-checking :variables syntax-checking-enable-by-default nil)
-     (shell :variables
-            shell-default-term-shell "/usr/bin/mksh"
-            shell-default-shell 'ansi-term)
-     clojure
+     syntax-checking
      react
      (ranger :variables ranger-show-preview t))
 
@@ -43,7 +37,7 @@
                                 (projects . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(monokai)
+   dotspacemacs-themes '(badwolf)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("DejaVu Sans Mono"
                                :size 11
