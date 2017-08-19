@@ -24,8 +24,7 @@
             shell-default-shell 'eshell
             shell-default-position 'right
             shell-default-term-shell "/bin/mksh"
-            shell-default-height 10
-            shell-enable-smart-eshell t)
+            shell-default-height 10)
      (ranger :variables ranger-show-preview t))
 
    dotspacemacs-additional-packages '(gist doom-themes)
