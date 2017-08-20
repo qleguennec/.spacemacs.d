@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : component
+#key : comp
+#contributor : void
+# --
+import React from 'react';
+import PropTypes from "prop-types";
+
+class $1 extends React.Component {
+}
+
+$1.propTypes = {};
+
+export default $1;

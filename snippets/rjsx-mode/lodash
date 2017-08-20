@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: lodash
+# key: implo
+# --
+import _ from "lodash";
+import fp from "lodash/fp";

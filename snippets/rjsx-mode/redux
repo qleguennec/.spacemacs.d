@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import-redux
+# key: impred
+# --
+import { $1 } from "react-redux"

@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: redstore
+# key: redstore
+# --
+import { createStore, combineReducers, applyMiddleware } from "redux";
+
+ const store = createStore(
+  combineReducers({ users, repos, errors, ui }),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+ );
+
+export default store;
