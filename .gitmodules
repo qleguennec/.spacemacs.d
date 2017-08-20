@@ -1,0 +1,3 @@
+[submodule "prettier-emacs"]
+	path = prettier-emacs
+	url = https://github.com/prettier/prettier-emacs

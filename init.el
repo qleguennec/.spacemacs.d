@@ -7,7 +7,7 @@
    dotspacemacs-ask-for-lazy-installation t
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
-   '(
+   '(markdown
      helm
      version-control
      git
@@ -99,9 +99,10 @@
    dotspacemacs-whitespace-cleanup nil))
 
 (defun dotspacemacs/user-init ()
-  (setq load-path (append load-path '("~/.spacemacs.d/42")))
+  (setq load-path (append load-path '("~/.spacemacs.d/42" "~/.spacemacs.d/prettier-emacs")))
   (load "header.el")
   (load "auto.el")
+  (load "prettier-js.el")
   (c-add-style "42"
                '((c-basic-offset . 4)
                  (tab-width . 4)
@@ -133,6 +134,7 @@
   (setq theming-modifications
         '((doom-vibrant
            (spacemacs-normal-face :background "#39438a")
+           (spacemacs-insert-face :background "#e38837")
            (ahs-face :background "#26292c" :foreground "#db208a")
            (ahs-plugin-whole-buffer-face :background "#26292c" :foreground "#db208a" :underline t)
            (font-lock-string-face :foreground "#e38837")
@@ -153,20 +155,32 @@
   (spacemacs/toggle-automatic-symbol-highlight-on)
   (spacemacs/toggle-vi-tilde-fringe-off)
   (spaceline-toggle-evil-state-off)
-  (spaceline-toggle-persp-name-off)
   (spaceline-toggle-buffer-id-on)
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-major-mode-off)
   (spaceline-toggle-buffer-encoding-off)
   (spaceline-toggle-buffer-size-off)
-  (spaceline-toggle-version-control-off)
   (spaceline-toggle-buffer-position-off)
-  (spaceline-toggle-workspace-number-off)
   (spaceline-toggle-buffer-modified-off)
   (spaceline-toggle-buffer-encoding-abbrev-off)
   (spaceline-toggle-purpose-off)
-  (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-buffer-position-on)
   (spaceline-toggle-hud-off)
+  (spaceline-toggle-line-column-on)
+
+  (add-to-list 'auto-mode-alist
+               '("\\.js\\'" . react-mode)
+               '("\\.jsx\\'" . react-mode))
+
+  ; js
+  (add-hook 'react-mode-hook 'prettier-js-mode)
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
 
   ;; clojure stuff
   clojure-enable-fancify-symbols t)
