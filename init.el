@@ -19,6 +19,7 @@
      parinfer
      theming
      command-log
+     javascript
      (shell :variables
             shell-default-shell 'eshell
             shell-default-position 'right
@@ -99,9 +100,9 @@
 
 (defun dotspacemacs/user-init ()
   (setq configuration-layer--elpa-archives
-        '(("melpa" . "~/.emacs.d/elpa-mirror/")
-          ("org"   . "~/.emacs.d/elpa-mirror/")
-          ("gnu"   .  "~/.emacs.d/elpa-mirror/")))
+        '(("melpa" . "~/.emacs.d/mirror-elpa/melpa")
+          ("org"   . "~/.emacs.d/mirror-elpa/org")
+          ("gnu"   .  "~/.emacs.d/mirror-elpa/gnu")))
   (setq load-path (append load-path '("~/.spacemacs.d/42" "~/.spacemacs.d/prettier-emacs")))
   (load "header.el")
   (load "auto.el")
@@ -172,14 +173,14 @@
   ;; js
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
   (add-hook 'rjsx-mode-hook 'flycheck-mode)
+  (add-hook 'rjsx-mode-hook (lambda () (setq-default
+                                        js2-basic-offset 2
+                                        web-mode-code-indent-offset 2)))
 
   (setf (alist-get "\\.js\\'" auto-mode-alist) 'rjsx-mode)
   (add-to-list 'auto-mode-alist
                '("\\.jsx\\'" . rjsx-mode))
   (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
-  (setq-default
-   js2-basic-offset 2
-   web-mode-code-indent-offset 2)
 
   ;; clojure stuff
   clojure-enable-fancify-symbols t)
@@ -218,7 +219,7 @@ This function is called at the very end of Spacemacs initialization."
  '(large-file-warning-threshold nil)
  '(package-selected-packages
    (quote
-    (rjsx-mode mmm-mode markdown-toc markdown-mode gh-md command-log-mode doom-themes all-the-icons memoize font-lock+ sayid impatient-mode web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode livid-mode skewer-mode simple-httpd less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern tern coffee-mode ranger parinfer flycheck-clojure clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider seq queue clojure-mode org-projectile org-present org-pomodoro org-download htmlize gnuplot gist gh marshal logito pcache helm-w3m w3m slack circe oauth2 websocket emojify ht emoji-cheat-sheet-plus company-emoji alert log4e gntp white-sand-theme symon string-inflection rebecca-theme realgud test-simple loc-changes load-relative password-generator helm-purpose window-purpose imenu-list evil-lion editorconfig browse-at-remote ag xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help xbm-life erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks disaster cmake-mode clang-format smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter diff-hl flycheck-pos-tip pos-tip flycheck zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme helm-company helm-c-yasnippet fuzzy company-statistics company-c-headers company auto-yasnippet yasnippet ac-ispell auto-complete typit mmt sudoku pacmacs dash-functional 2048-game ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
+    (company-sourcekit rjsx-mode mmm-mode markdown-toc markdown-mode gh-md command-log-mode doom-themes all-the-icons memoize font-lock+ sayid impatient-mode web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode livid-mode skewer-mode simple-httpd less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern tern coffee-mode ranger parinfer flycheck-clojure clojure-snippets clj-refactor inflections edn multiple-cursors paredit peg cider-eval-sexp-fu cider seq queue clojure-mode org-projectile org-present org-pomodoro org-download htmlize gnuplot gist gh marshal logito pcache helm-w3m w3m slack circe oauth2 websocket emojify ht emoji-cheat-sheet-plus company-emoji alert log4e gntp white-sand-theme symon string-inflection rebecca-theme realgud test-simple loc-changes load-relative password-generator helm-purpose window-purpose imenu-list evil-lion editorconfig browse-at-remote ag xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help xbm-life erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks disaster cmake-mode clang-format smeargle orgit magit-gitflow helm-gitignore gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-commit with-editor git-gutter diff-hl flycheck-pos-tip pos-tip flycheck zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme pastels-on-dark-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme firebelly-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme helm-company helm-c-yasnippet fuzzy company-statistics company-c-headers company auto-yasnippet yasnippet ac-ispell auto-complete typit mmt sudoku pacmacs dash-functional 2048-game ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async)))
  '(safe-local-variable-values
    (quote
     ((cider-cljs-lein-repl . "(do (user/go) (user/cljs-repl))")
@@ -229,7 +230,15 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#f8f8f8" :background "#26292c")))))
+ '(default ((t (:foreground "#f8f8f8" :background "#26292c"))))
+ '(ahs-face ((t (:background "#26292c" :foreground "#db208a"))))
+ '(ahs-plugin-whole-buffer-face ((t (:background "#26292c" :foreground "#db208a" :underline t))))
+ '(font-lock-string-face ((t (:foreground "#e38837"))))
+ '(powerline-active1 ((t (:background "#5984b8" :foreground "#ffffff"))))
+ '(powerline-inactive1 ((t (:foreground "#95abdb"))))
+ '(powerline-inactive2 ((t (:background "#2a2e38"))))
+ '(spacemacs-insert-face ((t (:background "#e38837"))))
+ '(spacemacs-normal-face ((t (:background "#39438a")))))
 )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

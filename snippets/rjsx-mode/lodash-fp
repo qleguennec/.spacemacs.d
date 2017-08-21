@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lodash-fp
+# key: fp
+# --
+import fp from 'lodash/fp';

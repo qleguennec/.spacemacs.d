@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: arrow-func-object
+# key: afo
+# --
+($1) => ({$2})
