@@ -98,6 +98,10 @@
    dotspacemacs-whitespace-cleanup nil))
 
 (defun dotspacemacs/user-init ()
+  (setq configuration-layer--elpa-archives
+        '(("melpa" . "~/.emacs.d/elpa-mirror/")
+          ("org"   . "~/.emacs.d/elpa-mirror/")
+          ("gnu"   .  "~/.emacs.d/elpa-mirror/")))
   (setq load-path (append load-path '("~/.spacemacs.d/42" "~/.spacemacs.d/prettier-emacs")))
   (load "header.el")
   (load "auto.el")
