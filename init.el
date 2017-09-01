@@ -9,6 +9,7 @@
    dotspacemacs-configuration-layers
    '(markdown
      helm
+     html
      version-control
      git
      emacs-lisp
@@ -67,7 +68,7 @@
    dotspacemacs-ex-substitute-global nil
    dotspacemacs-default-layout-name "Home"
    dotspacemacs-display-default-layout t
-   dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-resume-layouts t
    dotspacemacs-large-file-size 1
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-max-rollback-slots 5
@@ -90,13 +91,13 @@
    dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'evil
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    dotspacemacs-smart-closing-parenthesis t
    dotspacemacs-highlight-delimiters 'all
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
-   dotspacemacs-whitespace-cleanup nil))
+   dotspacemacs-whitespace-cleanup t))
 
 (defun dotspacemacs/user-init ()
   (setq configuration-layer--elpa-archives
@@ -171,7 +172,22 @@
   (spaceline-toggle-line-column-on)
   (linum-relative-global-mode)
 
+  ;; custom keybindings
+  (define-key evil-normal-state-map "L" 'evil-forward-arg)
+  (define-key evil-normal-state-map "H" 'evil-backward-arg)
+  (define-key evil-normal-state-map "K" 'evil-jump-out-args)
+
+  ;; matchit
+  (defun evilmi-customize-keybinding ()
+    (evil-define-key 'normal evil-matchit-mode-map
+      "m" 'evilmi-jump-items))
+  (global-evil-matchit-mode 1)
+
   ;; js
+  (setq prettier-js-args '("--bracket-spacing" "false"
+                           "--trailing-comma" "none"
+                           "--print-width" "70"
+                           "--use-tabs" "true"))
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
   (add-hook 'rjsx-mode-hook 'flycheck-mode)
   (add-hook 'rjsx-mode-hook (lambda () (setq-default
