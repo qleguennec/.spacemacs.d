@@ -156,7 +156,9 @@
   (spaceline-toggle-hud-off)
   (spaceline-toggle-line-column-on)
   (spaceline-toggle-persp-name-off)
-  (linum-relative-global-mode)
+
+  (setq browse-url-browser-function 'browse-url-generic
+        engine/browser-function 'eww-browse-url) 
 
   ;; custom keybindings
   (define-key evil-normal-state-map "L" 'evil-forward-arg)
