@@ -144,6 +144,8 @@
   ;; toggles
   (spacemacs/toggle-centered-point-globally-on)
   (spacemacs/toggle-vi-tilde-fringe-off)
+  (spacemacs/toggle-camel-case-motion-globally)
+
   (spaceline-toggle-evil-state-off)
   (spaceline-toggle-buffer-id-on)
   (spaceline-toggle-buffer-encoding-off)
