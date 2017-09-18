@@ -168,19 +168,20 @@
 
   ;; js
   (setq prettier-js-args '("--bracket-spacing" "false"
+                           "--no-semi" "false"
                            "--trailing-comma" "none"
-                           "--print-width" "70"
-                           "--use-tabs" "true"))
+                           "--print-width" "70"))
+
   (add-hook 'rjsx-mode-hook 'prettier-js-mode)
-  (add-hook 'rjsx-mode-hook 'flycheck-mode)
+
   (add-hook 'rjsx-mode-hook (lambda () (setq-default
                                         js2-basic-offset 2
                                         web-mode-code-indent-offset 2)))
 
-  (setf (alist-get "\\.js\\'" auto-mode-alist) 'rjsx-mode)
   (add-to-list 'auto-mode-alist
                '("\\.jsx\\'" . rjsx-mode))
-  (flycheck-add-mode 'javascript-eslint 'rjsx-mode)
+  (add-to-list 'auto-mode-alist
+               '("\\.js\\'" . rjsx-mode))
 
   ;; clojure stuff
   (setq cider-cljs-lein-repl
