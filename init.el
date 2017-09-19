@@ -48,14 +48,14 @@
    dotspacemacs-startup-lists '((todos . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(darkokai)
+   dotspacemacs-themes '(sanityinc-tomorrow-eighties)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("DejaVu Sans Mono"
                                :size 12
                                :weight normal
                                :width normal
                                :antialias t
-                               :powerline-scale 1)
+                               :powerline-scale 1.3)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-ex-command-key ":"
@@ -146,6 +146,7 @@
   (spacemacs/toggle-vi-tilde-fringe-off)
   (spacemacs/toggle-camel-case-motion-globally)
 
+  (global-command-log-mode)
   (spaceline-toggle-evil-state-off)
   (spaceline-toggle-buffer-id-on)
   (spaceline-toggle-buffer-encoding-off)
@@ -239,10 +240,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(spacemacs-insert-face ((nil (:background "#e38837"))))
- '(spacemacs-normal-face ((nil (:background "#39438a")))))
-)
+ ;; If there is more than one, they won't work right.)
+ ))
 
 
 
