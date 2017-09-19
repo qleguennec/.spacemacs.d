@@ -10,6 +10,15 @@
    '(auto-completion
      clojure
      command-log
+     (erc :variables
+          erc-server-list
+          '(("irc.gitter.im"
+             :port "6667"
+             :ssl t
+             :nick "qleguennec")
+            ("irc.freenode.net"
+             :port "6666"
+             :nick "qleguennec")))
      emacs-lisp
      git
      helm
@@ -83,7 +92,7 @@
    dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    dotspacemacs-active-transparency 100
    dotspacemacs-inactive-transparency 100
    dotspacemacs-show-transient-state-title t
@@ -146,7 +155,6 @@
   (spacemacs/toggle-vi-tilde-fringe-off)
   (spacemacs/toggle-camel-case-motion-globally)
 
-  (global-command-log-mode)
   (spaceline-toggle-evil-state-off)
   (spaceline-toggle-buffer-id-on)
   (spaceline-toggle-buffer-encoding-off)
