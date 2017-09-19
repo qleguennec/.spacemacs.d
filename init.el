@@ -10,15 +10,6 @@
    '(auto-completion
      clojure
      command-log
-     (erc :variables
-          erc-server-list
-          '(("irc.gitter.im"
-             :port "6667"
-             :ssl t
-             :nick "qleguennec")
-            ("irc.freenode.net"
-             :port "6666"
-             :nick "qleguennec")))
      emacs-lisp
      git
      helm
