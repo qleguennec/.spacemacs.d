@@ -11,6 +11,7 @@
      clojure
      command-log
      emacs-lisp
+     erc
      git
      helm
      html
@@ -25,10 +26,7 @@
      version-control
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      (shell :variables
-            shell-default-shell 'eshell
-            shell-default-position 'right
-            shell-default-term-shell "/bin/mksh"
-            shell-default-height 10))
+            shell-default-shell 'eshell))
 
    dotspacemacs-additional-packages '(gist doom-themes rjsx-mode prettier-js)
    dotspacemacs-frozen-packages '()
@@ -48,7 +46,7 @@
    dotspacemacs-startup-lists '((todos . 7))
    dotspacemacs-startup-buffer-responsive t
    dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(sanityinc-tomorrow-eighties)
+   dotspacemacs-themes '(doom-one)
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("DejaVu Sans Mono"
                                :size 12
